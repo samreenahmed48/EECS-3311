@@ -1,5 +1,7 @@
 
 package unisync;
+import java.time.LocalDate;
+import unisync.model.AcademicTask;
 
 import unisync.model.Course;
 
@@ -15,5 +17,21 @@ public class Main {
         course1.setCourseName("Software Design Patterns");
 
         System.out.println("Updated: " + course1);
+        
+        System.out.println("\nAcademic Task Test:");
+
+        AcademicTask task1 = new AcademicTask(
+            "Assignment 1",
+            "Assignment",
+            "EECS3311",
+            LocalDate.of(2026, 11, 15),
+            5);
+
+        System.out.println(task1);
+
+        task1.markCompleted();
+
+        System.out.println("After completion:");
+        System.out.println(task1);
     }
 }
