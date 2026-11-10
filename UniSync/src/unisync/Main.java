@@ -2,6 +2,8 @@
 package unisync;
 import java.time.LocalDate;
 import unisync.model.AcademicTask;
+import java.time.LocalDateTime;
+import unisync.model.Commitment;
 
 import unisync.model.Course;
 
@@ -33,5 +35,16 @@ public class Main {
 
         System.out.println("After completion:");
         System.out.println(task1);
+        
+        
+        System.out.println("\nCommitment Test:");
+
+        Commitment work = new Commitment(
+            "Part-time Job",
+            "Work",
+            LocalDateTime.of(2026, 11, 16, 16, 0),
+            LocalDateTime.of(2026, 11, 16, 20, 0));
+
+        System.out.println(work);
     }
 }
