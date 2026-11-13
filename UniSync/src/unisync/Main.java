@@ -5,6 +5,7 @@ import unisync.model.AcademicTask;
 import java.time.LocalDateTime;
 import unisync.model.Commitment;
 import unisync.model.StudentData;
+import unisync.planner.ConflictDetector;
 
 import unisync.model.Course;
 
@@ -60,6 +61,21 @@ public class Main {
 		System.out.println("Courses: " + studentData.getCourses());
 		System.out.println("Tasks: " + studentData.getTasks());
 		System.out.println("Commitments: " + studentData.getCommitments());
+		
+
+		System.out.println("\nConflict Detection Test:");
+		
+		Commitment club = new Commitment(
+		    "Club Meeting",
+		    "Extracurricular",
+		    LocalDateTime.of(2026, 11, 16, 17, 0),
+		    LocalDateTime.of(2026, 11, 16, 19, 0));
+		
+		ConflictDetector detector = new ConflictDetector();
+		
+		System.out.println("Work and Club conflict: "
+		        + detector.hasConflict(work, club));
+
 
     }
 }
