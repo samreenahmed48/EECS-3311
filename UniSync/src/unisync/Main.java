@@ -7,6 +7,11 @@ import unisync.model.Commitment;
 import unisync.model.StudentData;
 import unisync.planner.ConflictDetector;
 
+import java.util.List;
+import unisync.model.StudySession;
+import unisync.planner.WeeklyScheduler;
+
+
 import unisync.model.Course;
 
 public class Main {
@@ -75,6 +80,32 @@ public class Main {
 		
 		System.out.println("Work and Club conflict: "
 		        + detector.hasConflict(work, club));
+
+
+		System.out.println("\nWeekly Study Schedule Test:");
+		
+		// Add an incomplete assignment to our existing student data.
+		AcademicTask task2 = new AcademicTask(
+		        "Assignment 2",
+		        "Assignment",
+		        "EECS3311",
+		        LocalDate.of(2026, 11, 20),
+		        5);
+		
+		studentData.addTask(task2);
+		
+		// Add the club meeting so the scheduler avoids it.
+		studentData.addCommitment(club);
+		
+		// Generate a schedule for November 16–22.
+		WeeklyScheduler scheduler = new WeeklyScheduler();
+		
+		List<StudySession> studyPlan = scheduler.generateSchedule(
+		        studentData, LocalDate.of(2026, 11, 16));
+		
+		for (StudySession session : studyPlan) {
+		    System.out.println(session);
+		}
 
 
     }
