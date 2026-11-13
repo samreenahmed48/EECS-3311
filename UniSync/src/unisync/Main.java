@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import unisync.model.AcademicTask;
 import java.time.LocalDateTime;
 import unisync.model.Commitment;
+import unisync.model.StudentData;
 
 import unisync.model.Course;
 
@@ -46,5 +47,19 @@ public class Main {
             LocalDateTime.of(2026, 11, 16, 20, 0));
 
         System.out.println(work);
+        
+
+		System.out.println("\nStudent Data Test:");
+		
+		StudentData studentData = new StudentData();
+		
+		studentData.addCourse(course1);
+		studentData.addTask(task1);
+		studentData.addCommitment(work);
+		
+		System.out.println("Courses: " + studentData.getCourses());
+		System.out.println("Tasks: " + studentData.getTasks());
+		System.out.println("Commitments: " + studentData.getCommitments());
+
     }
 }
